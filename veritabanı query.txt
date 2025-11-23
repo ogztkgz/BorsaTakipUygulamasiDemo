@@ -1,0 +1,36 @@
+CREATE TABLE musteriler (
+
+musteriId int identity(1,1) NOT NULL PRIMARY KEY,
+musteriAd varchar(30) NOT NULL ,
+musteriSoyad varchar(30) NOT NULL ,
+musteriTel char(11) ,
+musteriMail varchar(30)
+
+)
+
+CREATE TABLE personel (
+
+personelId int identity(1,1) NOT NULL PRIMARY KEY,
+personelAd varchar(30) NOT NULL ,
+personelSoyad varchar(30) NOT NULL ,
+personelUnvan varchar(30)
+)
+
+
+
+CREATE PROCEDURE personelHesap
+as
+select hesapId,(personelAd + ' '+personelSoyad ) as personelAdSoyad, personelSıfre from personelHesap
+inner join personel
+on
+personelHesap.hesapId = personel.personelId 
+
+CREATE PROCEDURE musterisifrebilgi
+as
+select musteriHesapId ,(musteriAd  + ' '+musteriSoyad  ) as musteriAdSoyad, musteriSıfre  from musteriHesap 
+inner join musteriler 
+on
+musteriHesap.musteriHesapId = musteriler.musteriId 
+
+
+
